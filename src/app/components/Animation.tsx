@@ -39,7 +39,7 @@ export function Animation() {
   const [selectedVideo, setSelectedVideo] = useState<AnimationItem | null>(null);
 
   return (
-    <section id="animation" className="py-20 bg-gray-50">
+    <section id="animation" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <motion.h2 
           className="text-4xl md:text-5xl mb-12 text-center"

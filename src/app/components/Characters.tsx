@@ -60,7 +60,7 @@ export function Characters() {
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
 
   return (
-    <section id="characters" className="py-20 bg-white">
+    <section id="characters" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <motion.h2 
           className="text-4xl md:text-5xl mb-12 text-center"

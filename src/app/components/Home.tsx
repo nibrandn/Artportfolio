@@ -40,16 +40,18 @@ export function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Welcome to JNI Art
+            Justin Ni
           </motion.h1>
+{/*
           <motion.p 
             className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Exploring creativity through storytelling, animation, and visual art
+            Animation
           </motion.p>
+          
           <motion.button 
             onClick={() => {
               const element = document.getElementById('story');
@@ -62,11 +64,12 @@ export function Home() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Explore My Work
+            Explore
           </motion.button>
+*/}
         </div>
       </div>
-
+      
       {/* Animated scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"

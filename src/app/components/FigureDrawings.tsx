@@ -83,7 +83,7 @@ export function FigureDrawings() {
   const [selectedDrawing, setSelectedDrawing] = useState<Drawing | null>(null);
 
   return (
-    <section id="figure-drawings" className="py-20 bg-gray-50">
+    <section id="figure-drawings" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <motion.h2 
           className="text-4xl md:text-5xl mb-12 text-center"

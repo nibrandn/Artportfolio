@@ -1,5 +1,6 @@
 import { Header } from '@/app/components/Header';
 import { Home } from '@/app/components/Home';
+import { Showreel } from '@/app/components/Showreel';
 import { Story } from '@/app/components/Story';
 import { Animation } from '@/app/components/Animation';
 import { Characters } from '@/app/components/Characters';
@@ -14,6 +15,7 @@ export default function App() {
       <Header />
       <main>
         <Home />
+        <Showreel />
         <Story />
         <Animation />
         <Characters />
