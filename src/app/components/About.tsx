@@ -1,42 +1,15 @@
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import { motion } from 'motion/react';
-import { Palette, Award, Users, Sparkles } from 'lucide-react';
-
-interface Presentation {
-  id: number;
-  title: string;
-  speakerDeckId: string;
-  description: string;
-}
-
-const presentations: Presentation[] = [
-  {
-    id: 1,
-    title: "My Creative Process",
-    speakerDeckId: "50021f75cf1db900020005e7", // Sample SpeakerDeck ID - replace with your actual presentations
-    description: "An overview of my artistic journey and methodologies"
-  },
-  {
-    id: 2,
-    title: "Character Development Workshop",
-    speakerDeckId: "50021f75cf1db900020005e7",
-    description: "Techniques and insights into creating compelling characters"
-  },
-];
+import { Palette, Award, Users, Sparkles, Mail, Instagram, Facebook } from 'lucide-react';
+import profileImg from '@/img/newyearnewme_orig.jpg'
 
 export function About() {
-  const stats = [
-    { icon: Palette, label: 'Years Creating', value: '10+' },
-    { icon: Award, label: 'Exhibitions', value: '25+' },
-    { icon: Users, label: 'Happy Collectors', value: '150+' },
-    { icon: Sparkles, label: 'Artworks Created', value: '300+' },
-  ];
 
   return (
     <section id="about" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 
+          <motion.h2
             className="text-4xl md:text-5xl mb-12 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -45,9 +18,9 @@ export function About() {
           >
             About the Artist
           </motion.h2>
-          
+
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <motion.div 
+            <motion.div
               className="aspect-square overflow-hidden bg-gray-200 rounded-lg"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -55,13 +28,13 @@ export function About() {
               transition={{ duration: 0.8 }}
             >
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1654870574819-ee447f65112d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcnRpc3QlMjB3b3Jrc3BhY2UlMjBzdHVkaW98ZW58MXx8fHwxNzcwMDY2NzkwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Artist workspace"
+                src={profileImg}
+                alt="Artist profile picture"
                 className="w-full h-full object-cover"
               />
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="space-y-6"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -69,96 +42,37 @@ export function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <p className="text-lg text-gray-700 leading-relaxed">
-                Welcome to my creative space. I am a multidisciplinary artist working across various mediums 
-                including painting, digital art, animation, and character design. My work explores the intersection 
-                of storytelling, emotion, and visual expression.
-              </p>
-              
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Each piece is a journey into the depths of expression, where abstract concepts meet tangible 
-                materials and animated worlds. Through my art, I aim to create visual narratives that resonate 
-                with viewers on a personal level.
-              </p>
-              
-              <p className="text-lg text-gray-700 leading-relaxed">
-                My artistic process is intuitive and experimental, constantly evolving as I discover new 
-                techniques and perspectives. I believe art should evoke emotion, spark curiosity, and inspire 
-                meaningful connections.
+                Justin Ni is an artist based in Los Angeles, interested in telling stories centered on diversity.
+                He graduated the Penny W. Stamps School of Art & Design at the University of Michigan where he studied animation and computer science. His short film about how cartoons shaped his Chinese-American identity has won multiple awards and is still touring film festivals around the world.
               </p>
 
-              <div className="pt-4">
-                <h3 className="text-2xl mb-4">Education & Experience</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• BFA in Fine Arts & Animation</li>
-                  <li>• Multiple solo and group exhibitions</li>
-                  <li>• Works in private collections worldwide</li>
-                  <li>• Ongoing exploration of mixed media & digital techniques</li>
-                </ul>
+              {/* Contact merged here */}
+              <div className="pt-8 border-t pt-8">
+                <h3 className="text-2xl mb-4">Get In Touch</h3>
+                <p className="text-gray-700 mb-4">Interested in commissioning a piece, collaborating, or simply want to connect? I'd love to hear from you.</p>
+
+                <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
+                  <a href="mailto:justinjni@gmail.com" className="flex items-center gap-3 text-lg hover:opacity-70 transition-opacity px-6 py-3 bg-black text-white rounded-full">
+                    <Mail size={20} />
+                    justinjni@gmail.com
+                  </a>
+                  <a href="tel:5209120747" className="flex items-center gap-3 text-lg hover:opacity-70 transition-opacity px-6 py-3 bg-black text-white rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="text-white"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.09 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.12 1.05.38 2.07.78 3.03a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.05-1.05a2 2 0 0 1 2.11-.45c.96.4 1.98.66 3.03.78A2 2 0 0 1 22 16.92z" /></svg>
+                    (520) 912-0747
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100 rounded-full hover:bg-pink-100">
+                    <Instagram size={20} />
+                  </a>
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100 rounded-full hover:bg-blue-100">
+                    <Facebook size={20} />
+                  </a>
+                </div>
               </div>
             </motion.div>
           </div>
-
-          {/* Stats section */}
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="bg-white p-6 rounded-lg text-center shadow-sm"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-              >
-                <stat.icon className="w-8 h-8 mx-auto mb-3 text-gray-700" />
-                <div className="text-3xl mb-2">{stat.value}</div>
-                <div className="text-gray-600 text-sm">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Presentations Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <h3 className="text-3xl mb-8 text-center">Presentations & Talks</h3>
-            <div className="grid md:grid-cols-2 gap-8">
-              {presentations.map((presentation, index) => (
-                <motion.div
-                  key={presentation.id}
-                  className="bg-white rounded-lg overflow-hidden shadow-sm"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                  whileHover={{ y: -5, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
-                >
-                  <div className="aspect-video w-full">
-                    <iframe
-                      src={`https://speakerdeck.com/player/${presentation.speakerDeckId}`}
-                      className="w-full h-full"
-                      frameBorder="0"
-                      allowFullScreen
-                      title={presentation.title}
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h4 className="text-xl mb-2">{presentation.title}</h4>
-                    <p className="text-gray-600">{presentation.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>

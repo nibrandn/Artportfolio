@@ -15,36 +15,32 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+  const navigate = (path: string) => {
+    window.location.hash = path;
+    setIsMenuOpen(false);
   };
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'story', label: 'Story' },
-    { id: 'animation', label: 'Animation' },
-    { id: 'characters', label: 'Characters' },
-    { id: 'figure-drawings', label: 'Figure Drawings' },
-    { id: 'about', label: 'About' },
+    { id: 'home', label: 'Home', path: '/home' },
+    { id: 'story', label: 'Story', path: '/story' },
+    { id: 'animation', label: 'Animation', path: '/animation' },
+    { id: 'characters', label: 'Characters', path: '/characters' },
+    { id: 'figure-drawings', label: 'Figure Drawings', path: '/figure-drawings' },
+    { id: 'about', label: 'About', path: '/about' },
   ];
 
   return (
-    <motion.header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm' : 'bg-white/80 backdrop-blur-md border-b border-gray-200'
-      }`}
+    <motion.header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm' : 'bg-white/80 backdrop-blur-md border-b border-gray-200'
+        }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <motion.button 
-            onClick={() => scrollToSection('hero')}
+          <motion.button
+            onClick={() => navigate('/home')}
             className="text-2xl tracking-tight hover:opacity-70 transition-opacity"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -55,9 +51,9 @@ export function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item, index) => (
-              <motion.button 
+              <motion.button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)} 
+                onClick={() => navigate(item.path)}
                 className="hover:opacity-70 transition-opacity"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -70,7 +66,7 @@ export function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <motion.button 
+          <motion.button
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
@@ -83,7 +79,7 @@ export function Header() {
         {/* Mobile Navigation */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div 
+            <motion.div
               className="md:hidden pt-4 pb-2 flex flex-col gap-3"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
@@ -91,9 +87,9 @@ export function Header() {
               transition={{ duration: 0.3 }}
             >
               {navItems.map((item, index) => (
-                <motion.button 
+                <motion.button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)} 
+                  onClick={() => navigate(item.path)}
                   className="text-left hover:opacity-70 transition-opacity py-2"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}

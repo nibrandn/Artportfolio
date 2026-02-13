@@ -5,20 +5,10 @@ export function Showreel(): React.ReactElement {
     const videoSrc = "https://player.vimeo.com/video/1052180875?h=28d3f66613";
 
     return (
-        <section id="showreel" className="py-20 bg-white">
-            <div className="container mx-auto px-6">
-                <motion.h2
-                    className="text-4xl md:text-5xl mb-4 text-center"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    Showreel
-                </motion.h2>
-
+        <section id="showreel" className="min-h-screen flex items-center justify-center bg-white pt-20">
+            <div className="container mx-auto px-6 flex items-center justify-center">
                 <div
-                    className="mx-auto"
+                    className="w-full max-w-4xl mx-auto"
                     style={{
                         position: "relative",
                         paddingBottom: "56.25%" /* keep 16:9 aspect ratio */,
@@ -29,15 +19,14 @@ export function Showreel(): React.ReactElement {
                     }}
                 >
                     <iframe
-                        src={videoSrc}
+                        src={`${videoSrc}&autoplay=1&muted=1&loop=1&autopause=`}
                         style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-                        frameBorder="0"
                         allow="autoplay; fullscreen; picture-in-picture"
                         allowFullScreen
                         title="Showreel"
                     />
                 </div>
-            </div>r
+            </div>
         </section>
     );
 };

@@ -70,11 +70,6 @@ export function Story() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            My artistic journey is one of continuous exploration and discovery. Each piece tells a story, 
-            whether through color, form, or the emotions they evoke. These works represent pivotal moments 
-            in my creative evolution.
-          </p>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
