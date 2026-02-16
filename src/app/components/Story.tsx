@@ -53,7 +53,7 @@ export function Story() {
   return (
     <section id="story" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
-        <motion.h2 
+        <motion.h2
           className="text-4xl md:text-5xl mb-12 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export function Story() {
           Story
         </motion.h2>
 
-        <motion.div 
+        <motion.div
           className="max-w-4xl mx-auto mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -71,10 +71,10 @@ export function Story() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
         </motion.div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {storyItems.map((item, index) => (
-            <motion.div 
+            <motion.div
               key={item.id}
               className="group cursor-pointer"
               onClick={() => setSelectedItem(item)}
@@ -101,21 +101,21 @@ export function Story() {
 
       {/* Detail Modal */}
       {selectedItem && (
-        <motion.div 
+        <motion.div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedItem(null)}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <button 
+          <button
             className="absolute top-6 right-6 text-white hover:opacity-70 transition-opacity"
             onClick={() => setSelectedItem(null)}
             aria-label="Close"
           >
             <X size={32} />
           </button>
-          
+
           <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="aspect-square overflow-hidden bg-gray-900 rounded-lg">
@@ -125,7 +125,7 @@ export function Story() {
                   className="w-full h-full object-contain"
                 />
               </div>
-              
+
               <div className="text-white p-6">
                 <h3 className="text-3xl md:text-4xl mb-4">{selectedItem.title}</h3>
                 {selectedItem.medium && (

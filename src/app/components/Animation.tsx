@@ -6,7 +6,8 @@ interface AnimationItem {
   id: number;
   title: string;
   description: string;
-  vimeoId: string;
+  provider: 'vimeo' | 'youtube';
+  videoId: string;
   year: string;
   thumbnail?: string;
 }
@@ -14,23 +15,34 @@ interface AnimationItem {
 const animations: AnimationItem[] = [
   {
     id: 1,
-    title: "Animated Short #1",
-    description: "An experimental animation exploring movement and rhythm.",
-    vimeoId: "76979871", // Sample Vimeo ID - replace with your actual videos
+    title: "MeiHouWang",
+    description: "On his first day of preschool, Sun goes toe-to-toe with his new classmates, channeling the strength of the legendary Monkey King to earn their respect and recognition.",
+    provider: 'vimeo',
+    videoId: "817153957",
     year: "2024"
   },
   {
     id: 2,
-    title: "Character Study",
-    description: "A character-driven animation showcasing personality through motion.",
-    vimeoId: "76979871",
+    title: "Techie Tots - RGB Magic!",
+    description: "Responsible of Key Animation",
+    provider: 'youtube',
+    videoId: "IC9tfmWnmVo",
     year: "2024"
   },
   {
     id: 3,
-    title: "Abstract Motion",
-    description: "Abstract shapes and forms dancing in synchronized movement.",
-    vimeoId: "76979871",
+    title: "Distant Star - Animated Poetry",
+    description: "Responsible for Key Animation and leading animation team",
+    provider: 'youtube',
+    videoId: "jTm6XltgmKI",
+    year: "2025"
+  },
+  {
+    id: 4,
+    title: "Short Loop",
+    description: "Provided rough and clean animation for various shots",
+    provider: 'youtube',
+    videoId: "10KpAfOSpWg",
     year: "2025"
   },
 ];
@@ -41,7 +53,7 @@ export function Animation() {
   return (
     <section id="animation" className="py-20 bg-white">
       <div className="container mx-auto px-6">
-        <motion.h2 
+        <motion.h2
           className="text-4xl md:text-5xl mb-12 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -51,22 +63,18 @@ export function Animation() {
           Animation
         </motion.h2>
 
-        <motion.div 
+        <motion.div
           className="max-w-4xl mx-auto mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <p className="text-lg text-gray-700 leading-relaxed text-center">
-            Bringing stories to life through the art of animation. Each piece explores different 
-            techniques, styles, and narratives.
-          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {animations.map((item, index) => (
-            <motion.div 
+            <motion.div
               key={item.id}
               className="group cursor-pointer bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               onClick={() => setSelectedVideo(item)}
@@ -78,7 +86,11 @@ export function Animation() {
             >
               <div className="aspect-video bg-gray-900 relative overflow-hidden">
                 <img
-                  src={`https://vumbnail.com/${item.vimeoId}.jpg`}
+                  src={
+                    item.provider === 'vimeo'
+                      ? `https://vumbnail.com/${item.videoId}.jpg`
+                      : `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg`
+                  }
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -102,7 +114,7 @@ export function Animation() {
 
         {/* Featured Video Player */}
         {selectedVideo && (
-          <motion.div 
+          <motion.div
             className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
             onClick={() => setSelectedVideo(null)}
             initial={{ opacity: 0 }}
@@ -116,10 +128,18 @@ export function Animation() {
               </div>
               <div className="aspect-video w-full bg-black rounded-lg overflow-hidden">
                 <iframe
-                  src={`https://player.vimeo.com/video/${selectedVideo.vimeoId}?autoplay=1`}
+                  src={
+                    selectedVideo.provider === 'vimeo'
+                      ? `https://player.vimeo.com/video/${selectedVideo.videoId}?autoplay=1`
+                      : `https://www.youtube.com/embed/${selectedVideo.videoId}?autoplay=1&rel=0&showinfo=0`
+                  }
                   className="w-full h-full"
                   frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture"
+                  allow={
+                    selectedVideo.provider === 'vimeo'
+                      ? 'autoplay; fullscreen; picture-in-picture'
+                      : 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                  }
                   allowFullScreen
                   title={selectedVideo.title}
                 />

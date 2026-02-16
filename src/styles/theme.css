@@ -181,3 +181,21 @@
     line-height: 1.5;
   }
 }
+
+/* Disable animations/transitions when reduced-motion is requested or on mobile */
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+  transition: none !important;
+  animation: none !important;
+  scroll-behavior: auto !important;
+}
+
+@media (max-width: 767px) {
+
+  /* additional safety for small screens */
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -79,10 +79,6 @@ export function Characters() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <p className="text-lg text-gray-700 leading-relaxed text-center">
-            A collection of characters that have emerged from my imagination. Each one carries their 
-            own story, personality, and visual identity.
-          </p>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">

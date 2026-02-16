@@ -25,7 +25,6 @@ export function Header() {
     { id: 'story', label: 'Story', path: '/story' },
     { id: 'animation', label: 'Animation', path: '/animation' },
     { id: 'characters', label: 'Characters', path: '/characters' },
-    { id: 'figure-drawings', label: 'Figure Drawings', path: '/figure-drawings' },
     { id: 'about', label: 'About', path: '/about' },
   ];
 
