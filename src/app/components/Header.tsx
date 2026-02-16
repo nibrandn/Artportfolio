@@ -80,22 +80,19 @@ export function Header() {
           {isMenuOpen && (
             <motion.div
               className="md:hidden pt-4 pb-2 flex flex-col gap-3"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
             >
-              {navItems.map((item, index) => (
-                <motion.button
+              {navItems.map((item) => (
+                <button
                   key={item.id}
                   onClick={() => navigate(item.path)}
                   className="text-left hover:opacity-70 transition-opacity py-2"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
                   {item.label}
-                </motion.button>
+                </button>
               ))}
             </motion.div>
           )}
